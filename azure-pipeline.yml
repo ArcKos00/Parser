@@ -1,0 +1,32 @@
+trigger: none
+
+variables:
+  buildConfiguration: 'Release'
+
+pool:
+  vmImage: 'windows-2019'
+
+steps:
+- task: UseDotNet@2
+  displayName: Use .NET 6.0
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x'
+      
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    projects: '$(System.DefaultWorkingDirectory)/Parser.Service/*.csproj'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Microsoft Azure - ABP'
+    appType: 'webAppLinux'
+    appName: 'service-kpanfilenko-parser-api'
+    resourceGroupName: 'rg-school-abp'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|6.0'

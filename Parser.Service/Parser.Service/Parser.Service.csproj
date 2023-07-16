@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<CodeAnalysisRuleSet>../../settings.ruleset</CodeAnalysisRuleSet>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Security.KeyVault.Secrets" Version="4.5.0" />
+		<PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.3" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Parser.Business\Parser.Business.Parser\Parser.Bussiness.Parser.csproj" />
+	  <ProjectReference Include="..\..\Parser.Common\Parser.Common.csproj" />
+	  <ProjectReference Include="..\..\Parser.Repos\Parser.Repos.Blob\Parser.Repos.Blob.csproj" />
+	  <ProjectReference Include="..\..\Parser.Repos\Parser.Repos.Parser\Parser.Repos.Parser.csproj" />
+	  <ProjectReference Include="..\..\Parser.Repos\Parser.Repos.SQLConnect\Parser.Repos.SQLConnect.csproj" />
+	  <ProjectReference Include="..\..\Utils\Utils\Utils.csproj" />
+	</ItemGroup>
+</Project>
