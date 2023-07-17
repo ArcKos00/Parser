@@ -24,9 +24,9 @@ steps:
     projects: '$(System.DefaultWorkingDirectory)/Parser.Service/*.csproj'
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Microsoft Azure - ABP'
+    azureSubscription: 'Microsoft Azure'
     appType: 'webAppLinux'
     appName: 'service-kpanfilenko-parser-api'
-    resourceGroupName: 'rg-school-abp'
+    resourceGroupName: 'school'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
     runtimeStack: 'DOTNETCORE|6.0'
